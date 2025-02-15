@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.ButtonBase{
+    padding: 8px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    width: 80%;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#searchButton {
+    padding: 12px 20px;
+}
+
+#results {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+#result-item{
+    border:gray solid 1px;
+    width: 100%;
+
+}
+
+
+
+.resultButton {
+    padding: 8px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#belowBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #7a2a70;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    display: flex;
+}
+
+.enableEthereumButton{
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+#detailContainerOut{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 95vh;
+}
+#detailContainerIn{
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+}
+
+#infoBlock{
+    display: block;
+    border: gray 1px solid;
+    border-radius: 5px;
+    padding: 20px;
+    height: 50%;
+
+}
+
+#confirmBlock{
+    display: none;
+    border: gray 1px solid;
+    border-radius: 5px;
+    padding: 20px;
+    height: 50%;
+
+
+}

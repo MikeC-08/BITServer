@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>資產信息</title>
+</head>
+<body >
+    {%include 'belowBar.html'%}
+    <div id="detailContainerOut">
+        <div id="detailContainerIn">
+            <div  id="infoBlock">
+                <h1>Asset Info</h1>
+                <p>Asset Name:<span id="name">{{data.asset_name}}</span></p>
+                <p>Address: <span id="address">{{data.address}}</span></p>
+                <p>Owner: <span id="owner">{{data.owner}}</span></p>
+                <p>Price: <span id="price">{{data.price}}</span> uUSDT</p>
+                
+                <hr style="border-top: 1px dashed #bbb;"> 
+
+                <button class="ButtonBase purchaseButton" id="{{data.address}}">Purchase</button>
+            </div>
+            <div id="confirmBlock">
+                <h1>Confirm Message</h1>
+                <p>Price:<span id="priceConfirm">{{data.price}}</span></p>
+                <p>Gas Price:<span id="gasPriceConfirm"></span></p>
+                <p>Estimate Gas:<span id="estimateGasConfirm"></span></p>
+                <p>Gas Fee:<span id="gasFeeConfirm"></span></p>
+                <p>Platform Fee:<span id="platformFeeConfirm"></span></p>
+                <hr style="border-top: 1px dashed #bbb;"> 
+
+                <button class="ButtonBase confirmButton" id="{{data.address}}">Confirm</button>
+            </div>
+        </div>
+    </div>
+        
+
+
+
+
+
+
+
+</body>
+</html>
