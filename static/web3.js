@@ -87,7 +87,7 @@ window.onload = function() {
       gasPriceText.innerHTML = data.gasPrice/1000000000 + " Wei/Unit";
       estimateGasText.innerHTML = data.gas + " Units";
       gasFeeText.innerHTML = data.gas * data.gasPrice / 1000000000 + " Wei";
-      platformFeeText.innerHTML = priceValue * 0.05 + " USDT";
+      platformFeeText.innerHTML = priceValue * 0.05 + " uUSDT";
       
     })
     .catch(error => {
