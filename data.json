@@ -3,17 +3,11 @@
         "platform_fee": 0.01
     },
     "assets":{
-        "0xB925077EeBB88FEE8b97ce6245B3ff8170b6e88c":{
-                "asset_name":"資產1",
-                "address":"0xB925077EeBB88FEE8b97ce6245B3ff8170b6e88c",
-                "owner":"0x6Aa78c5565c755a747344073Dedb55a1d17C3C85",
-                "price": 10
-            },
-        "0x1816aAc6995CcE3781F824AcAA512443C089F393":{
-                "asset_name":"資產2",
-                "address":"0x1816aAc6995CcE3781F824AcAA512443C089F393",
-                "owner": "0x198567a8a58c2915eCE5444a065cD1EE6C6c2c39",
-                "price": 20
+        "0x7819EffDE23738a542E6AA4658C34c5b8054BF87":{
+                "asset_name":"Asset1",
+                "address":"0x7819EffDE23738a542E6AA4658C34c5b8054BF87",
+                "owner":"0x7491058489b5FF454a931d0172C6d729D7587bb1",
+                "price": 59
             }
     }
 }
