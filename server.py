@@ -9,6 +9,8 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # 為安全起見，請使用一個強密鑰
 assetJson = {}
 w3 = Web3(HTTPProvider('http://opgameplay.tplinkdns.com:8545'))
+chain_id = 31337 # Hardhat
+BIT_owner_address = '0x271D0a64BaC8870897eF54d32D6B24e88493898F'
 GameAssetAbi = {}
 USDC_Abi = {}
 USDC_ADDRESS = '0xB4AcC2D7E94Eb1188Fd91c5b5F0B3aD06A140541'
@@ -21,7 +23,7 @@ def approve_transaction():
     asset = request.args.get('asset')
     print(buyer)
 
-    buyer_safeAddress = Web3.to_checksum_address(buyer)
+    buyer_safeAddress = w3.to_checksum_address(buyer)
     
     contract = w3.eth.contract(address=USDC_ADDRESS, abi=USDC_Abi)
     tx_for_estimate_gas = {'from':buyer_safeAddress, 'gasPrice': w3.eth.gas_price}
@@ -36,6 +38,33 @@ def approve_transaction():
 #    0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0042
 # 0x095ea7b3000000000000000000000000bf58718f95c8b68f90d592c343dd676c5fd2f6430000000000000000000000000000000000000000000000000000000000000042
 
+import function.assetGenerator as assetGenerator
+import function.IPFS_simulate as IPFS_simulate
+import function.contract as contract
+@app.route('/lottery')
+def lotteryPage():
+    generateReq = request.args.get('generateReq',None)
+    targetAddress = request.args.get('targetAddress',None)
+    metadata = None
+    if generateReq and targetAddress:
+        metadata = assetGenerator.FPS_Game_Skin()
+        CID = IPFS_simulate.upload(metadata)
+        assetsLastIndex = assetJson.get('assetsLastIndex', 0)
+        assetJson['assetsLastIndex'] = assetsLastIndex + 1
+        
+        Asset_address = contract.asset_deploy(w3,chain_id=chain_id, BIT_owner_address=BIT_owner_address, IPFS_CID=CID, assetID=assetJson['assetsLastIndex'], giveto_address=targetAddress)
+        assetJson['assets'][Asset_address] = {
+            "asset_name": metadata.get('name', 'Null'),
+            "address": Asset_address,
+            "owner": targetAddress
+        }
+        dataScript.save(assetJson)
+        
+    return render_template('lottery.html', metadata = metadata)
+
+        
+    
+    
 
 @app.route('/transaction')
 def transaction():
@@ -61,9 +90,11 @@ def transaction():
 def detail():
     query = request.args.get('address')
     if query:
+        price = contract.get_price(w3, query)
+        available = contract.get_available(w3, query)
         data = assetJson['assets'][query]
-        
-        
+        data['price']  = price
+        data['available'] = available
         return render_template('detail.html', data=data, gas_price = w3.eth.gas_price/1000000000)
     else:
         return redirect('/')

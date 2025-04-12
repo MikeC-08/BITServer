@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Asset Lottery</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+    <h1>Asset Lottery</h1>
+    <form>
+    <input style="display: none;" type="text" name="generateReq" value="True">
+    <input type="text" name="targetAddress" placeholder="targetAddress 0x???" required>
+    <input type="submit" value="Generate">
+    </form>
+    {% if metadata%}
+    <form>
+        <input style="display: none;" type="text" name="rarity" value="{{metadata.rarity}}" required>
+        <input style="display: none;" type="text" name="asset" value="{{metadata.asset}}" required>
+        <table>
+            <tbody>
+            <tr>
+                <th>Rarity</th><td>{{metadata.rarity}}</td>
+            </tr>
+            <tr>
+                <th>Asset Name</th><td>{{metadata.asset}}</td>
+            </tr>
+            <tr>
+                <th></th><td><input type="submit" value="Confirm"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    {% endif %}
+
+  <script>
+    function generateProduct() {
+      // 獲取表單數據
+      var productSeries = document.querySelector('input[name="product_series"]').value;
+
+      //  這裡可以添加你的程式碼，例如：將數據儲存到資料庫、產生檔案等。
+      //  目前只是簡單地顯示數據。
+      alert("產品系列: " + productSeries + "\nIPFS CID: " + ipfsCid);
+    }
+  </script>
+
+</body>
+</html>

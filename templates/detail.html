@@ -16,21 +16,39 @@
                 <p>Owner: <span id="owner">{{data.owner}}</span></p>
                 <p>Price: <span id="price">{{data.price}}</span> uUSDT</p>
                 <p>Current Gas Price: <span id="gasPrice">{{gas_price}}</span> Wei/Unit</p>
+                <p style='display:none'>Current Available: <span id="available">{{data.available}}</span></p>
                 
                 <hr style="border-top: 1px dashed #bbb;"> 
-
                 <button class="ButtonBase purchaseButton" id="{{data.address}}">Purchase</button>
-            </div>
-            <div id="confirmBlock">
-                <h1>Confirm Message</h1>
-                <p>Price:<span id="priceConfirm">{{data.price}}</span></p>
-                <p>Gas Price:<span id="gasPriceConfirm"></span></p>
-                <p>Estimate Gas:<span id="estimateGasConfirm"></span></p>
-                <p>Gas Fee:<span id="gasFeeConfirm"></span></p>
-                <p>Platform Fee:<span id="platformFeeConfirm"></span></p>
-                <hr style="border-top: 1px dashed #bbb;"> 
+                <p id='noAvailableText'style='color:red'>The Asset is not available for you to purchase.<p>
 
-                <button class="ButtonBase confirmButton" id="{{data.address}}">Confirm</button>
+
+            </div>
+            <div id="ownerBlock">
+                <h1>Owner Block</h1>
+                <p>
+                    <input type='number' name="newPrice" id="newPrice" min=0 placeholder='Enter New Price' value={{data.price}}> 
+                    <button class="ButtonBase" id="updatePriceButton">Update</button>
+                </p>
+                <hr style="border-top: 1px dashed #bbb;"> 
+                <p>
+                    {% if data.available == True %}
+
+                    <input type="radio" name='available' id='availableTrue' value="True" checked>
+                    <label for="availableTrue">Available</label>
+                    <input type="radio" name='available' id='availableFalse' value="False">
+                    <label for="availableFalse">Not Available</label>
+                    {% else %}
+                    <input type="radio" name='available' id='availableTrue' value="True">
+                    <label for="availableTrue">Available</label>
+                    <input type="radio" name='available' id='availableFalse' value="False" checked>
+                    <label for="availableFalse">Not Available</label>
+                    {% endif %}
+
+                    <button class="ButtonBase" id="updateAvailableButton">Update</button>
+                </p>
+                <hr style="border-top: 1px dashed #bbb;"> 
+                
             </div>
         </div>
     </div>

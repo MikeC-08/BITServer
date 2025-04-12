@@ -1,13 +1,22 @@
 {
-    "settings":{
+    "settings": {
         "platform_fee": 0.01
     },
-    "assets":{
-        "0x7819EffDE23738a542E6AA4658C34c5b8054BF87":{
-                "asset_name":"Asset1",
-                "address":"0x7819EffDE23738a542E6AA4658C34c5b8054BF87",
-                "owner":"0x7491058489b5FF454a931d0172C6d729D7587bb1",
-                "price": 59
-            }
+    "BIT_address": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1",
+    "USDC": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+    "assetsLastIndex": 1,
+    "assets": {
+        "0x7819EffDE23738a542E6AA4658C34c5b8054BF87": {
+            "asset_name": "Asset1",
+            "address": "0x7819EffDE23738a542E6AA4658C34c5b8054BF87",
+            "owner": "0x7491058489b5FF454a931d0172C6d729D7587bb1",
+            "price": 59
+        },
+        "0xf68b5B3E09d61eBe2C0f683817e19D3a1a0cE055": {
+            "asset_name": "MP9 - Green Coating + Flashbang",
+            "address": "0xf68b5B3E09d61eBe2C0f683817e19D3a1a0cE055",
+            "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
+            "price": 0
+        }
     }
 }

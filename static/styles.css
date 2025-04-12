@@ -95,7 +95,7 @@ body {
 
 }
 
-#confirmBlock{
+#ownerBlock{
     display: none;
     border: gray 1px solid;
     border-radius: 5px;
@@ -103,4 +103,7 @@ body {
     height: 50%;
 
 
+}
+.disabled {
+    background-color: #ccc;
 }
