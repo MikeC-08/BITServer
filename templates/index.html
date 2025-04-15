@@ -7,14 +7,11 @@
     <title>Better Item Trade Plaform</title>
 </head>
 <body>
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search Asset By Name" />
-        <button class="ButtonBase" id="searchButton">Search</button>
-    </div>
+
 
     
     <table id="results">
-        <tr><th >Asset Name</th><th style="width:450px;">Address</th><th style="width:150px;">Owner</th><th style="width:80px;">Price</th><th width=70px></th></tr>
+        <tr><th >Asset Name</th><th style="width:450px;">Address</th><th style="width:150px;">Owner</th><th style="width:120px;">Price</th><th width=70px></th></tr>
         {% if data.results %}
             {% for result in data.results %}
                 {%include 'SearchResult.html'%}
@@ -26,7 +23,7 @@
         {% endif %}
     </table>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
     {%include 'belowBar.html'%}
 </body>
 </html>

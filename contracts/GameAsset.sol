@@ -9,30 +9,33 @@ using SafeERC20 for IERC20;
 
 // interface IERC20 { 
 //     // function transfer(address _to, uint256 _value) external returns (bool);
-//     function balanceOf(address account) external view returns (uint256);
-//     function approve(address _spender, uint256 _value) external returns (bool);
-//     function transferFrom(address _from, address _to, uint256 _value) external returns (bool);
+//     function symbol() external view returns (string memory);
 // }
 
 
 contract GameAsset is ERC721 {
     address public owner;
+    address public token_address;
     bool public isList;
-    uint256 public price_in_uUSDC;
+    uint256 public price_in_uToken;
     string public AssetMetadata; //IPFS Hash
-    IERC20 public USDC;
-    address public BITAddress;
+    IERC20 public Token;
+    address payable public BITAddress;
+    uint256 public platform_fee_eth;
 
     // show change log in chain
-    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner, uint256 indexed price_in_uUSDC);
-    constructor(address _BITAddress, string memory _IPFS_CID,address _init_owner) ERC721("BIT_Asset", "BIT_GA") {
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner, uint256 indexed price_in_uToken, address token_address);
+    constructor(address payable _BITAddress, string memory _IPFS_CID, address _init_owner, address _token_address, uint256 _platform_fee_eth) ERC721("BIT_Asset", "BITA") {
         BITAddress = _BITAddress;
         AssetMetadata = _IPFS_CID; // Bind to a IPFS Hash
         owner = _init_owner;
         isList = false;
-        price_in_uUSDC = 100; // Defualt price| 1,000,000uUSDC = 1 USDC
-        USDC = IERC20(address(0xB4AcC2D7E94Eb1188Fd91c5b5F0B3aD06A140541)); // USDC Address
+        price_in_uToken = 999999; // Defualt price| 1,000,000uToken = 1 uToken
+        token_address = _token_address;
+        Token = IERC20(_token_address); // Token Address
+        platform_fee_eth = _platform_fee_eth;
     }
+
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Only the Asset owner can call this function");
@@ -49,29 +52,42 @@ contract GameAsset is ERC721 {
     }
 
     function setPrice(uint256 newPrice) public onlyOwner{
-        price_in_uUSDC = newPrice;
+        price_in_uToken = newPrice;
     }  
 
+    function sendEth(uint _value) private returns(bool) {
+        BITAddress.transfer(_value);
+        return true;
+    }
+
     // Not for trade. Just a gift funcion.
-    function transferOwnership(address newOwner) public onlyOwner {
+    function transferOwnership(address newOwner) public payable onlyOwner {
         require(newOwner != address(0), "Invalid new owner address");
-        emit OwnershipTransferred(owner, newOwner, price_in_uUSDC);
+        require(msg.value == platform_fee_eth, "Please pay the correct platform fee.");
+        
+        // send to platform_fee to BIT
+        require(sendEth(msg.value), "Failed to send Ether");
+
+        
+        emit OwnershipTransferred(owner, newOwner, 0, token_address);
         owner = newOwner;
     }
 
 
-    function Purchase() public onlyAvailable{
-        require(USDC.allowance(address(msg.sender), address(this)) == price_in_uUSDC, "Approval failed"); // when buyer use this function, give approval to this contract to transfer USDC.
-        // require(USDC.safeTransferFrom(msg.sender , owner, price_in_uUSDC), "Failed to send USDC");// once the contract get approval, transfer the USDC to owner.
-        
-        // USDC.forceApprove(address(this), price_in_uUSDC);
-        
-        USDC.safeTransferFrom(address(msg.sender) , address(owner), price_in_uUSDC);
-        
+    function Purchase() public onlyAvailable payable {
+        require(Token.allowance(address(msg.sender), address(this)) == price_in_uToken, "Approval failed."); // when buyer use this function, give approval to this contract to transfer Token.
+        require(Token.balanceOf(address(msg.sender)) > price_in_uToken, "Tokens are not sufficient to purchase the underlying asset."); // when buyer use this function, give approval to this contract to transfer Token.
+        require(msg.value == platform_fee_eth, "Please pay the correct platform fee.");
+
+
+        require(sendEth(msg.value), "Failed to send Ether");
+
+        Token.safeTransferFrom(address(msg.sender) , address(owner), price_in_uToken);
+
         // transferOwnership after payment
-        address newOwner = address(msg.sender);
-        emit OwnershipTransferred(owner, newOwner, price_in_uUSDC);
-        owner = newOwner;
+        emit OwnershipTransferred(owner, address(msg.sender), price_in_uToken, token_address);
+        owner = address(msg.sender);
+        // Set asset not available for public to Purchase
         isList = false;
     }
 }

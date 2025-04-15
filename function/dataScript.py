@@ -1,6 +1,5 @@
 import json
 
-
 def search_asset(jsonData, asset_name=None, address=None, limit=20):
     """
     搜尋指定名稱或地址的資產。
@@ -13,9 +12,11 @@ def search_asset(jsonData, asset_name=None, address=None, limit=20):
     results = []
 
     for item in jsonData['assets'].values():
+       
         if (asset_name is None or asset_name.lower() in item['asset_name'].lower()) and \
            (address is None or address.lower() in item['address'].lower()):
             results.append(item)
+            
             
         if len(results) >= limit:
             break

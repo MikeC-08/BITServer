@@ -3,21 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>資產信息</title>
+    <title>Asset Info</title>
 </head>
 <body >
     {%include 'belowBar.html'%}
     <div id="detailContainerOut">
+
         <div id="detailContainerIn">
+            <div id="historyBlock">
+                <h1>Transactions History</h1>
+
+                <div class='title'>
+                    <p>Average Transaction Price Last 12 Months</p>
+                  </div>
+                  <svg class='container' width="{{graph.width}}" height="{{graph.height}}" viewBox="30 27 529 286" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+                      <desc>Created with Sketch.</desc>
+                      <defs></defs>
+                      <g id="graph-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(30.000000, 27.000000)">
+                          <g id="y_axis" font-size="11.0833333" font-family=".HelveticaNeueDeskInterface-Regular, .Helvetica Neue DeskInterface" fill="#ffffff" opacity="0.4" font-weight="normal">
+                              <text id="{{graph.y_axis[0]}}">
+                                  <tspan x="12.7757572" y="264.333333">{{graph.y_axis[0]}}</tspan>
+                              </text>
+                              <text id="{{graph.y_axis[1]}}">
+                                  <tspan x="12.7757572" y="232.666667">{{graph.y_axis[1]}}</tspan>
+                              </text>
+                              <text id="{{graph.y_axis[2]}}">
+                                  <tspan x="12.7757572" y="201">{{graph.y_axis[2]}}</tspan> 
+                              </text>
+                              <text id="{{graph.y_axis[3]}}">
+                                  <tspan x="12.7757572" y="169.333333">{{graph.y_axis[3]}}</tspan>
+                              </text>
+                              <text id="{{graph.y_axis[4]}}">
+                                  <tspan x="12.7757572" y="137.666667">{{graph.y_axis[4]}}</tspan>
+                              </text>
+                              <text id="{{graph.y_axis[5]}}">
+                                  <tspan x="12.7757572" y="106">{{graph.y_axis[5]}}</tspan>
+                              </text>
+                              <text id="{{graph.y_axis[6]}}">
+                                  <tspan x="12.7757572" y="74.3333333">{{graph.y_axis[6]}}</tspan>
+                              </text>
+                              <text id="{{graph.y_axis[7]}}">
+                                  <tspan x="12.7757572" y="42.6666667">{{graph.y_axis[7]}}</tspan>
+                              </text>
+                              <text id="{{graph.y_axis[8]}}">
+                                  <tspan x="12.7757572" y="11">{{graph.y_axis[8]}}</tspan>
+                              </text>
+                          </g>
+                          <g id="GRAPHS" transform="translate(64.000000, 5.000000)" stroke-linecap="round" stroke-width="8" stroke-linejoin="round">
+                            {% for line in graph.lines%}
+                                <polyline id="averagePrice" stroke="#{{line.color}}" points="{{line.line}}"></polyline>
+                            {% endfor %}
+                          </g>
+                          <g id="x_axis" transform="translate(71.974046, 271.541667)" font-size="11.0833333" font-family=".HelveticaNeueDeskInterface-Regular, .Helvetica Neue DeskInterface" fill="#ffffff" opacity="0.4" font-weight="normal">
+                              <text id="{{graph.x_axis[0]}}">
+                                  <tspan x="0.396183206" y="11">{{graph.x_axis[0]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[1]}}">
+                                  <tspan x="39.2603361" y="11">{{graph.x_axis[1]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[2]}}">
+                                  <tspan x="78.8786567" y="11">{{graph.x_axis[2]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[3]}}">
+                                  <tspan x="118.496977" y="11">{{graph.x_axis[3]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[4]}}">
+                                  <tspan x="158.115298" y="11">{{graph.x_axis[4]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[5]}}">
+                                  <tspan x="197.733619" y="11">{{graph.x_axis[5]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[6]}}">
+                                  <tspan x="237.351939" y="11">{{graph.x_axis[6]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[7]}}">
+                                  <tspan x="276.97026" y="11">{{graph.x_axis[7]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[8]}}">
+                                  <tspan x="316.58858" y="11">{{graph.x_axis[8]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[9]}}">
+                                  <tspan x="359.229833" y="11">{{graph.x_axis[9]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[10]}}">
+                                  <tspan x="400.036703" y="11">{{graph.x_axis[10]}}</tspan>
+                              </text>
+                              <text id="{{graph.x_axis[11]}}">
+                                  <tspan x="438.466474" y="11">{{graph.x_axis[11]}}</tspan>
+                              </text>
+                          </g>
+                          <g id="grid" transform="translate(46.618321, 4.750000)" stroke="#ffffff" stroke-linecap="square" opacity="0.0800000057">
+                              <path d="M0.396183206,1.1875 L478.991396,1.1875" id="Line"></path>
+                              <path d="M0.396183206,32.8541667 L478.991396,32.8541667" id="Line"></path>
+                              <path d="M0.396183206,64.5208333 L478.991396,64.5208333" id="Line"></path>
+                              <path d="M0.396183206,96.1875 L478.991396,96.1875" id="Line"></path>
+                              <path d="M0.396183206,127.854167 L478.991396,127.854167" id="Line"></path>
+                              <path d="M0.396183206,159.520833 L478.991396,159.520833" id="Line"></path>
+                              <path d="M0.396183206,191.1875 L478.991396,191.1875" id="Line"></path>
+                              <path d="M0.396183206,222.854167 L478.991396,222.854167" id="Line"></path>
+                              <path d="M0.396183206,254.520833 L478.991396,254.520833" id="Line"></path>
+                          </g>
+                      </g>
+                  </svg>
+                  <p>X Axis:Months | Y Axis: Price</p>
+            </div>
             <div  id="infoBlock">
                 <h1>Asset Info</h1>
                 <p>Asset Name:<span id="name">{{data.asset_name}}</span></p>
                 <p>Address: <span id="address">{{data.address}}</span></p>
                 <p>Owner: <span id="owner">{{data.owner}}</span></p>
-                <p>Price: <span id="price">{{data.price}}</span> uUSDT</p>
+                <p>Price: <span id="price">{{data.price}}</span> u{{data.symbol}}</p>
                 <p>Current Gas Price: <span id="gasPrice">{{gas_price}}</span> Wei/Unit</p>
+                <p>Plaform Fee <span id="plaformFee">{{plaformFee}}</span> Wei</p>
                 <p style='display:none'>Current Available: <span id="available">{{data.available}}</span></p>
+                <p style='display:none'>Currency Address: <span id="currencyAddress">{{data.currencyAddress}}</span></p>
                 
+
                 <hr style="border-top: 1px dashed #bbb;"> 
                 <button class="ButtonBase purchaseButton" id="{{data.address}}">Purchase</button>
                 <p id='noAvailableText'style='color:red'>The Asset is not available for you to purchase.<p>
@@ -33,7 +135,6 @@
                 <hr style="border-top: 1px dashed #bbb;"> 
                 <p>
                     {% if data.available == True %}
-
                     <input type="radio" name='available' id='availableTrue' value="True" checked>
                     <label for="availableTrue">Available</label>
                     <input type="radio" name='available' id='availableFalse' value="False">
@@ -48,12 +149,13 @@
                     <button class="ButtonBase" id="updateAvailableButton">Update</button>
                 </p>
                 <hr style="border-top: 1px dashed #bbb;"> 
-                
             </div>
         </div>
     </div>
         
-
+</div>
+</div>
+</div>
 
 
 

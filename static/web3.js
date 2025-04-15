@@ -3,6 +3,8 @@ let connectedAccount = null
 const showAccountText = document.querySelector(".showAccount")
 
 
+
+
 ethereumButton.addEventListener("click", () => {
   getAccount()
 })
@@ -31,7 +33,7 @@ async function getAccount() {
     })
   const account = accounts[0]
   connectedAccount = account
-  showAccountText.innerHTML = 'Connected ' + account
+  showAccountText.innerHTML = '<img src="https://images.ctfassets.net/clixtyxoaeas/1ezuBGezqfIeifWdVtwU4c/d970d4cdf13b163efddddd5709164d2e/MetaMask-icon-Fox.svg" height="12px">'+' Connected <img src="https://images.ctfassets.net/clixtyxoaeas/1ezuBGezqfIeifWdVtwU4c/d970d4cdf13b163efddddd5709164d2e/MetaMask-icon-Fox.svg" height="12px">' + account
 }
 
 let currentAccount = null
@@ -58,14 +60,14 @@ function handleAccountsChanged(accounts) {
   if (accounts.length === 0) {
     // MetaMask is locked or the user has not connected any accounts.
     console.log("Please connect to MetaMask.")
-    showAccountText.innerHTML = 'Connect to MetaMask'
+    showAccountText.innerHTML = 'Connect to <img src="https://images.ctfassets.net/clixtyxoaeas/1ezuBGezqfIeifWdVtwU4c/d970d4cdf13b163efddddd5709164d2e/MetaMask-icon-Fox.svg" height="12px">MetaMask<img src="https://images.ctfassets.net/clixtyxoaeas/1ezuBGezqfIeifWdVtwU4c/d970d4cdf13b163efddddd5709164d2e/MetaMask-icon-Fox.svg" height="12px">'
   } else if (accounts[0] !== currentAccount) {
     
     // Reload your interface with accounts[0].
     currentAccount = accounts[0]
     connectedAccount = currentAccount
     // Update the account displayed (see the HTML for the connect button)
-    showAccountText.innerHTML = 'Connected ' + currentAccount
+    showAccountText.innerHTML = '<img src="https://images.ctfassets.net/clixtyxoaeas/1ezuBGezqfIeifWdVtwU4c/d970d4cdf13b163efddddd5709164d2e/MetaMask-icon-Fox.svg" height="12px">'+' Connected <img src="https://images.ctfassets.net/clixtyxoaeas/1ezuBGezqfIeifWdVtwU4c/d970d4cdf13b163efddddd5709164d2e/MetaMask-icon-Fox.svg" height="12px">' + currentAccount
     
     // get var
     let AssetAddress = document.getElementById("address").innerHTML.toLowerCase();
@@ -99,10 +101,6 @@ function handleAccountsChanged(accounts) {
     updatePriceButton.addEventListener("click", function() {
       let newPrice = document.getElementById("newPrice").value;
       let currentPrice = document.getElementById("price").innerHTML;
-      
-      
-      console.log("New Price: ", newPrice);
-      console.log("Current Price: ", currentPrice);
       console.log(currentPrice == newPrice);
       if(currentPrice != newPrice){
         setNewPrice(AssetAddress, newPrice);
@@ -132,31 +130,34 @@ function handleAccountsChanged(accounts) {
   )
   }
 }
-function transaction_sent(to, data){
+
+function transaction_sent(to, data, value=0){
   window.ethereum.request({
     "method": "eth_sendTransaction",
     "params": [
      {
         from: connectedAccount,
         to: to,
-        value: 0,
+        value: value,
         data: data.toLowerCase(),
-        // Customizable by the user during MetaMask confirmation.
+        // '0x5028' = Customizable by the user during MetaMask confirmation.
         gasLimit: '0x5028',
-        // Customizable by the user during MetaMask confirmation.
+        // '0x3b9aca00' = Customizable by the user during MetaMask confirmation.
         maxPriorityFeePerGas: '0x3b9aca00',
-        // Customizable by the user during MetaMask confirmation.
+        // '0x2540be400' = Customizable by the user during MetaMask confirmation.
         maxFeePerGas: '0x2540be400',
      }
    ],
    })
    .then((txHash) => {
     console.log(txHash);
+    window.location.reload()
     return true, txHash
   })
    .catch((error) => {
     console.error(error)
     console.log("transaction failed");
+    window.location.reload()
     return false, error
   });
 }
@@ -182,11 +183,10 @@ function setNewAvailable(assetAddress, newAvailable){
 }
 
 function setNewPrice(assetAddress, newPrice){
-  console.log(newPrice);
   let hexWidth = 64; 
-  let MethodID = '0x91b7f5ed'; // setPrice(uint256 newPrice) https://etherscan.io/methodidconverter
-
-  let firstVariable_hex = newPrice.toString(16);
+  let MethodID = '0x91b7f5ed'; // setPrice(uint256) https://etherscan.io/methodidconverter
+    
+  let firstVariable_hex = parseInt(newPrice).toString(16);
   console.log(firstVariable_hex)
   firstVariable_hex = firstVariable_hex.padStart(hexWidth, "0");
 
@@ -196,135 +196,93 @@ function setNewPrice(assetAddress, newPrice){
 }
 
 
-function purchase(){
-  let hexWidth = 64; 
+
+function purchase(assetAddress){
+  console.log('Purchasing')
   let MethodID = '0x49c15bd9'
+  let plaformFee = document.getElementById('plaformFee').innerHTML; 
+  // 0.000001 
+  // 0.000000001
+  // 0.000001
+  // let firstVariable_hex = newPrice.toString(16);
+  // console.log(firstVariable_hex)
+  // firstVariable_hex = firstVariable_hex.padStart(hexWidth, "0");
 
-  let firstVariable_hex = newPrice.toString(16);
-  console.log(firstVariable_hex)
-  firstVariable_hex = firstVariable_hex.padStart(hexWidth, "0");
 
-
-  let functionData = MethodID + firstVariable_hex;
-  transaction_sent(assetAddress,functionData);
+  let functionData = MethodID;
+  transaction_sent(assetAddress,functionData, "1".toString(16));
 }
-
-function giveApprove(assetAddress,allowPrice){
-  const USDCAddress = '0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6'
+function clearApprove(assetAddress){
   let hexWidth = 64; 
-  let MethodID = '0x095ea7b3' // https://etherscan.io/methodidconverter
+  let MethodID = '0x095ea7b3'; // approve(address,uint256) https://etherscan.io/methodidconverter
+  let currencyAddress = document.getElementById('currencyAddress');
 
-  let allowPrice_hex = allowPrice.toString(16)
+  let allowPrice = 0;
+
+  //0x095ea7b3  00000000 00000000 00000000 9a676e78 1a523b5d 0c0e4373 1313a708 cb607508   00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  //0x095ea7b3  00000000 00000000 00000000 2ba0aE59 fFEd8b01 5774AB70 a00C085a 7461604e   00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  let allowPrice_hex = parseInt(allowPrice).toString(16);
   let leftAlignedAllowPrice_hex = allowPrice_hex.padStart(hexWidth, "0");
   let leftAlignedAssetAddress_hex = assetAddress.slice(2).padStart(hexWidth, "0");
 
-  let approveData = MethodID + leftAlignedAssetAddress_hex + leftAlignedAllowPrice_hex
-  console.log(approveData)
+  let functionData = MethodID + leftAlignedAssetAddress_hex + leftAlignedAllowPrice_hex
+  console.log("Clear: ", functionData);
+  transaction_sent(currencyAddress,functionData);
+}
+
+function giveApprove(assetAddress,allowPrice){
+  let hexWidth = 64; 
+  let MethodID = '0x095ea7b3'; // approve(address,uint256) https://etherscan.io/methodidconverter
+  let currencyAddress = document.getElementById('currencyAddress').innerHTML;
+  console.log("Giving Allow(",allowPrice,") to:", assetAddress)
+  console.log("currencyAddress: ",currencyAddress)
+
+  let allowPrice_hex = parseInt(allowPrice).toString(16)
+  let leftAlignedAllowPrice_hex = allowPrice_hex.padStart(hexWidth, "0");
+  let leftAlignedAssetAddress_hex = assetAddress.slice(2).padStart(hexWidth, "0");
+
+  let functionData = MethodID + leftAlignedAssetAddress_hex + leftAlignedAllowPrice_hex
   // 0xfce353f6 61626300 00000000 00000000 00000000 00000000 00000000 00000000 00000000   64656600 00000000 00000000 00000000 00000000 00000000 00000000 00000000
   // 0x095ea7b3 Bf58718F 95C8b68f 90d592c3 43DD676c 5fD2f643 00000000 00000000 000000     b4c30000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
   // 0xfce353f661626300000000000000000000000000000000000000000000000000000000006465660000000000000000000000000000000000000000000000000000000000
   // 0x095ea7b3Bf58718F95C8b68f90d592c343DD676c5fD2f643000000000000000000000000b4c3000000000000000000000000000000000000000000000000000000000000
-
-  window.ethereum.request({
-    "method": "eth_sendTransaction",
-    "params": [
-     {
-        from: connectedAccount,
-        to: USDCAddress,
-        value: 0,
-        data: approveData.toLowerCase(),
-        // Customizable by the user during MetaMask confirmation.
-        gasLimit: '0x5028',
-        // Customizable by the user during MetaMask confirmation.
-        maxPriorityFeePerGas: '0x3b9aca00',
-        // Customizable by the user during MetaMask confirmation.
-        maxFeePerGas: '0x2540be400',
-     }
-   ],
-   })
-   .then((txHash) => {
-    console.log(txHash);
-    return true
-  })
-   .catch((error) => {
-    console.error(error)
-    console.log("Approve failed");
-    return false
-  });
-
+  transaction_sent(currencyAddress,functionData);
 }
 
 window.onload = function() {
 
   let purchaseButton = document.getElementsByClassName("purchaseButton")[0];
-
-  let priceText = document.getElementById("priceConfirm");
-  let addressText = document.getElementById("address");
-  let gasPriceText = document.getElementById("gasPriceConfirm");
-  let estimateGasText = document.getElementById("estimateGasConfirm");
-  let gasFeeText = document.getElementById("gasFeeConfirm");
-  let platformFeeText = document.getElementById("platformFeeConfirm");
-
   let priceValue = document.getElementById("price").innerHTML;
-  let gasPriceValue = document.getElementById("gasPrice").innerHTML;
   let addressStr = document.getElementById("address").innerHTML;
 
 
+
+
   purchaseButton.addEventListener("click", () => {
-
-    // approve estimate gas
-    path = "/approve_transaction?address=" + connectedAccount + "&price=" + priceValue + "&asset=" + addressStr
-    fetch(path)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-
-      if (confirm("Note: Approval requires a certain Gas Fee.\nGas Price: "+ gasPriceValue+" Wei/Unit\nEstimate Gas: " + data.gas + " Units\nGas Fee: " + data.gas * gasPriceValue +" Wei\nAre you sure you want to approve?") == true){
-        path = "/transaction?address=" + connectedAccount + "&price=" + priceValue + "&asset=" + addressStr
-        //giveApprove(USDCAddress, assetAddress, gas, data, allowPrice)
-        hasApprove = giveApprove(addressStr, data.gas);
-          if (hasApprove == true){
-            purchase();
-          // fetch(path)
-          // .then(response => {
-          //   if (!response.ok) {
-          //     throw new Error('Network response was not ok');
-          //   }
-          //   return response.json();
-          // })
-          // .then(data => {
-            
-
-          //   console.log(data);
-          //   gasPriceText.innerHTML = gasPriceValue + " Wei/Unit";
-          //   estimateGasText.innerHTML = data.gas + " Units";
-          //   gasFeeText.innerHTML = data.gas * gasPriceValue + " Wei";
-          //   platformFeeText.innerHTML = priceValue * 0.05 + " uUSDT";
-            
-          // })
-          // .catch(error => {
-          //   console.error('There was a problem with the fetch operation:', error);
-          // });
-
-        }
-      }
-      else{
-        
-      }
-      
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
-    //
-      
+        check_approve_path  = "/check_approve?assetAddress=" + addressStr + "&buyer=" + connectedAccount + "&price="+ priceValue;
+        fetch(check_approve_path)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log(data)
+          if(data.approved == 'True'){
+            hasApprove = true;
+            console.log('Already Approved');
+            purchase(addressStr);
+          }
+          else{
+            console.log('Not Approved. Requesting Approve.');
+            if(data.allowance != 0){clearApprove(addressStr);}
+            hasApprove = giveApprove(addressStr, priceValue);
+            purchase(addressStr);
+          }
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+        });
   });
-
-
-
 };

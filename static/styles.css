@@ -1,37 +1,53 @@
 body {
     font-family: Arial, sans-serif;
+    background: #121212;
+}
+th{
+    text-align: start;
+    border-bottom: solid 1px #121212;
 }
 .ButtonBase{
     padding: 8px 20px;
-    background-color: #4CAF50;
+    background-color: #252525;
     color: white;
     border: none;
     cursor: pointer;
+    border: 1px solid #252525;
+    border-radius: 10px;
 }
 
 .search-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px auto;
+    justify-content: center;
+    margin: 5px auto;
     width: 80%;
+    
 }
 
 #searchInput {
     flex: 1;
     padding: 10px;
     box-sizing: border-box;
+    max-width: 450px;
+    background-color: #121212;
+    border: #202020 solid 1px;
+    border-radius: 10px;
+    color: #8d8d8d
 }
 
 #searchButton {
     padding: 12px 20px;
+    display: none;
 }
 
 #results {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #121212;
+    border-radius: 10px;
+    background-color: #202020 ;
     width: 100%;
+    color: #ffffff;
 }
 
 #result-item{
@@ -44,7 +60,7 @@ body {
 
 .resultButton {
     padding: 8px 20px;
-    background-color: #4CAF50;
+    background-color: #252525;
     color: white;
     border: none;
     cursor: pointer;
@@ -55,20 +71,35 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #7a2a70;
+    background-color: #252525;
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     align-items: center;
     display: flex;
 }
-
+#gachaButton{
+    background-color: #121212;
+    border: #121212 solid 1px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+#homeButton{
+    background-color: #121212;
+    border: #121212 solid 1px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
 .enableEthereumButton{
     margin-left: auto;
     margin-right: auto;
-    color: black;
+    color: #8d8d8d;
     padding: 8px 20px;
     border: none;
     cursor: pointer;
+    background-color: #121212;
+    border: #121212 solid 1px;
+    border-radius: 10px;
+    margin-right: 20px;
 }
 
 
@@ -82,27 +113,35 @@ body {
 #detailContainerIn{
     display: flex;
     align-items: center;
-
+    color: #ffffff;
     height: 100%;
 }
 
 #infoBlock{
     display: block;
-    border: gray 1px solid;
+    border: #202020 1px solid;
     border-radius: 5px;
     padding: 20px;
     height: 50%;
-
+    background-color: #121212;
 }
 
 #ownerBlock{
     display: none;
-    border: gray 1px solid;
+    border: #202020 1px solid;
     border-radius: 5px;
     padding: 20px;
     height: 50%;
+    background-color: #121212;
+}
 
-
+#historyBlock{
+    display: block;
+    border: #202020 1px solid;
+    border-radius: 5px;
+    padding: 20px;
+    height: 50%;
+    background-color: #121212;
 }
 .disabled {
     background-color: #ccc;

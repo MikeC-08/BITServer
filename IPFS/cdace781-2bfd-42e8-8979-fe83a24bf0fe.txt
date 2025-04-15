@@ -1,0 +1,1 @@
+{'rarity': 'Epic', 'name': 'M4A1 - Snow Camo Coating + Flamethrower Effect', 'wear': 0.0006}

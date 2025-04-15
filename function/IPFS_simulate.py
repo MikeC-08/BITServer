@@ -10,7 +10,7 @@ def upload(data):
     return CID
         
 def download(CID):
-    with open(f'./IPFS/{CID}', 'r') as f:
+    with open(f'./IPFS/{CID}.txt', 'r') as f:
         data = f.read()
     return data
 

@@ -1,0 +1,1 @@
+{'rarity': 'Common', 'name': 'AK-47 - Black Base Coating', 'wear': 0.3719}

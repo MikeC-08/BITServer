@@ -1,5 +1,11 @@
 <div id="belowBar">
-
-    <button class="enableEthereumButton"><span class="showAccount">Require MetaMask</span></button>
+    <button class = "ButtonBase" id="homeButton">Home</button>
+    <button class = "ButtonBase" id="gachaButton">Gacha</button>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search Asset By Name or Address" />
+        <button class="ButtonBase" id="searchButton">Search</button>
+    </div>
+    <button class="enableEthereumButton"><span class="showAccount"><img src="https://images.ctfassets.net/clixtyxoaeas/1ezuBGezqfIeifWdVtwU4c/d970d4cdf13b163efddddd5709164d2e/MetaMask-icon-Fox.svg" height="20px">Require MetaMask</span></button>
     <script src="{{ url_for('static', filename='web3.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </div>

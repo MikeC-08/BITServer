@@ -1,0 +1,1 @@
+{'rarity': 'Common', 'name': 'M4A1 - Classic Green Camo', 'wear': 0.2699}

@@ -12,6 +12,11 @@ contract BIT{
         itemsCreatorManager[creator] = true;
         itemsCreator[creator] = true;
     }
+    event Received(address sender, uint amount);
+    receive() external payable {
+        emit Received(msg.sender, msg.value);
+    }
+        
 
 
     function setItemsCreator(address _target, bool _permission) public{

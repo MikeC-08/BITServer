@@ -7,7 +7,12 @@ document.getElementById('searchInput').addEventListener('keypress', function(eve
 document.getElementById('searchButton').addEventListener('click', function() {
     query();
 });
-
+document.getElementById('gachaButton').addEventListener('click', function() {
+    window.location.href = './gacha';
+});
+document.getElementById('homeButton').addEventListener('click', function() {
+    window.location.href = './';
+});
 function query(){
     method = "byName"
     value = document.getElementById('searchInput').value;
@@ -22,3 +27,4 @@ for (let button of resultButtons) {
         window.location.href = '/detail?address='+button.id;
     });
 }
+
