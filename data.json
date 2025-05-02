@@ -1,94 +1,127 @@
 {
     "settings": {
-        "platform_fee_wei": 1,
+        "platform_fee_wei": 5,
         "TestMode": "test"
     },
     "init": {
         "BIT_owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F"
     },
     "normal": {
-        "defaultAddress": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
-        "defaultSymbol": "USDT"
+        "defaultAddress": "<user-input>"
     },
     "test": {
-        "defaultAddress": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1",
+        "defaultAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7",
         "defaultSymbol": "USDT"
     },
-    "BIT_address": "0xe0d6c586f0E9856547D7703eC5019DCEBD01DaFf",
-    "assetsLastIndex": 69,
+    "BIT_address": "0xA5911bC4C528183914101EC8eBC2cE3870F8aD42",
+    "assetsLastIndex": 15,
     "assets": {
-        "0x08676949512862791993E0733FFfd4F7DfF3C673": {
+        "0x1D88934B18e7925cd9b7c3e6c20487E96072FEb2": {
+            "asset_name": "M4A1 - Classic Green Camo",
+            "address": "0x1D88934B18e7925cd9b7c3e6c20487E96072FEb2",
+            "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7",
+            "price": "10 (USDT)",
+            "available": false,
+            "symbol": "USDT"
+        },
+        "0x94C746AaAB7B629F64e7DF9eaF4ec2E870F3B7C1": {
             "asset_name": "M4A1 - Desert Camo Coating",
-            "address": "0x08676949512862791993E0733FFfd4F7DfF3C673",
+            "address": "0x94C746AaAB7B629F64e7DF9eaF4ec2E870F3B7C1",
             "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
-            "currencyAddress": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1",
-            "price": "18 (USDT)",
-            "available": true,
-            "symbol": "USDT"
-        },
-        "0xaf933FE1bE923E81E8A56119AA9355eeAe50D21e": {
-            "asset_name": "AK-47 - Black Base Coating",
-            "address": "0xaf933FE1bE923E81E8A56119AA9355eeAe50D21e",
-            "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
-            "currencyAddress": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7",
             "price": "999999 (USDT)",
-            "available": false,
-            "symbol": "USDT"
+            "available": false
         },
-        "0x754198C68Abb226276BBF2bec01d7869d0a25FfA": {
+        "0xdBc5e719740de3e1DD05DC1aB73a869B55BF86c6": {
+            "asset_name": "AK-47 - Black Base Coating",
+            "address": "0xdBc5e719740de3e1DD05DC1aB73a869B55BF86c6",
+            "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7",
+            "price": "999999 (USDT)",
+            "available": false
+        },
+        "0x4a1D5E87892FaB995376751845E9B88C7cD17375": {
             "asset_name": "AK-47 - Red Coating",
-            "address": "0x754198C68Abb226276BBF2bec01d7869d0a25FfA",
+            "address": "0x4a1D5E87892FaB995376751845E9B88C7cD17375",
             "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
-            "currencyAddress": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7",
             "price": "999999 (USDT)",
             "available": false
         },
-        "0x24bEAA5a93ae15Acb9c168F44a6C6D8435d87db8": {
-            "asset_name": "AK-47 - Gold Coating + Explosion Effect",
-            "address": "0x24bEAA5a93ae15Acb9c168F44a6C6D8435d87db8",
+        "0xC3698b494307d8107475070ecBB62aaCD038CEfC": {
+            "asset_name": "MP9 - Green Coating + Flashbang",
+            "address": "0xC3698b494307d8107475070ecBB62aaCD038CEfC",
             "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
-            "currencyAddress": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1",
-            "price": 999999,
-            "available": false,
-            "symbol": "USDT"
-        },
-        "0xdA0A33F8340Cb4Db6361C3dEb969d1110461792C": {
-            "asset_name": "Smoke Grenade - Standard Blue",
-            "address": "0xdA0A33F8340Cb4Db6361C3dEb969d1110461792C",
-            "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
-            "currencyAddress": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7",
             "price": "999999 (USDT)",
             "available": false
         },
-        "0x64f352a0d926182e19424968bBA76712071e9b16": {
-            "asset_name": "Smoke Grenade - Standard Blue",
-            "address": "0x64f352a0d926182e19424968bBA76712071e9b16",
-            "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
-            "currencyAddress": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1",
+        "0x63cBE0043871cdBD8B8C4085F919a8785f53E8AD": {
+            "asset_name": "UMP45 - Grey Coating",
+            "address": "0x63cBE0043871cdBD8B8C4085F919a8785f53E8AD",
+            "owner": "0xaaA9ea39E21Cfb146341AD098C0D74B07eb59DBC",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7",
             "price": "999999 (USDT)",
             "available": false
         },
-        "0xaA57ef345Db66a8673751387C7c4a580Fc4dA51F": {
+        "0xf3ABC9539DB12623976EEF156FDfe3875cA362A8": {
+            "asset_name": "M4A1 - Desert Camo Coating + Flame + Flashbang",
+            "address": "0xf3ABC9539DB12623976EEF156FDfe3875cA362A8",
+            "owner": "0xaaA9ea39E21Cfb146341AD098C0D74B07eb59DBC",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7",
+            "price": "999999 (USDT)",
+            "available": false
+        },
+        "0x323CBBCacF7f26726210AfB70cFCe0da51DFCbf1": {
             "asset_name": "MP9 - Blue Coating",
-            "address": "0xaA57ef345Db66a8673751387C7c4a580Fc4dA51F",
-            "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
-            "currencyAddress": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1",
+            "address": "0x323CBBCacF7f26726210AfB70cFCe0da51DFCbf1",
+            "owner": "0xaaA9ea39E21Cfb146341AD098C0D74B07eb59DBC",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7",
             "price": "999999 (USDT)",
             "available": false
         },
-        "0x5eB7C47faE924D6EFE297313fA21418583871D6c": {
-            "asset_name": "MP9 - Blue Coating",
-            "address": "0x5eB7C47faE924D6EFE297313fA21418583871D6c",
+        "0x407c6CcB6ef1fBB50e01DaA6B82e631F4D8143b7": {
+            "asset_name": "Smoke Grenade - Standard Blue",
+            "address": "0x407c6CcB6ef1fBB50e01DaA6B82e631F4D8143b7",
             "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
-            "currencyAddress": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1",
-            "price": "999999 (USDT)",
-            "available": false
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7"
         },
-        "0xc414D14a3F28408D44c18a2649cc087e318AEd2F": {
+        "0x8a7c8816ee22FAEaD0591AAE0fC34F7c263E0023": {
+            "asset_name": "MP9 - Green Coating + Explosion + Smoke",
+            "address": "0x8a7c8816ee22FAEaD0591AAE0fC34F7c263E0023",
+            "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7"
+        },
+        "0x235a1856336042425F6C2c75CFAbf914C4b3a2ED": {
             "asset_name": "AK-47 - Black Base Coating",
-            "address": "0xc414D14a3F28408D44c18a2649cc087e318AEd2F",
+            "address": "0x235a1856336042425F6C2c75CFAbf914C4b3a2ED",
             "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
-            "currencyAddress": "0x51e394314E7e8cCBB97C6D708BC31946F96De7C1"
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7"
+        },
+        "0x38F72B3076624afd8F7E0846992C140d52c29FE7": {
+            "asset_name": "M4A1 - Classic Green Camo",
+            "address": "0x38F72B3076624afd8F7E0846992C140d52c29FE7",
+            "owner": "0x271D0a64BaC8870897eF54d32D6B24e88493898F",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7"
+        },
+        "0xE393806FC006D37da9b2967f3591aE6a0a4d6d49": {
+            "asset_name": "AK-47 - Black Base Coating",
+            "address": "0xE393806FC006D37da9b2967f3591aE6a0a4d6d49",
+            "owner": "0xaaA9ea39E21Cfb146341AD098C0D74B07eb59DBC",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7"
+        },
+        "0x951Ed71acB3c701F5492174FF4fe24E580F687e4": {
+            "asset_name": "M4A1 - Classic Green Camo",
+            "address": "0x951Ed71acB3c701F5492174FF4fe24E580F687e4",
+            "owner": "0xaaA9ea39E21Cfb146341AD098C0D74B07eb59DBC",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7"
+        },
+        "0x12117868E3cEDfC5E3Cd7b43651f844dd11bFDEa": {
+            "asset_name": "M4A1 - Desert Camo Coating",
+            "address": "0x12117868E3cEDfC5E3Cd7b43651f844dd11bFDEa",
+            "owner": "0xaaA9ea39E21Cfb146341AD098C0D74B07eb59DBC",
+            "currencyAddress": "0xA2B3A057768232953da6c5c276527B3A37AE55F7"
         }
     }
 }

@@ -1,1 +1,0 @@
-{'rarity': 'Epic', 'name': 'HE Grenade - Red Coating + Explosion Effect', 'wear': 0.637}

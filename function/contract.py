@@ -95,6 +95,11 @@ def getDefaultAddress(w3, data):
                 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
                 Asset_address = tx_receipt.contractAddress
                 print(f"* USDT for test deployed at address: {Asset_address}")
+                with open('CurrencySymbol.json','r') as f:
+                    CurrencySymbol =  json.load(f)
+                CurrencySymbol[Asset_address] = data['test']['defaultSymbol']
+                with open('CurrencySymbol.json','w') as f:
+                    json.dump(CurrencySymbol,f,indent=4)
                 data['test']['defaultAddress']=Asset_address
                 with open('data.json', 'w') as f:
                     json.dump(data, f, indent=4)
@@ -169,12 +174,12 @@ def bit_deploy(w3, data):
                     }
                 )
     
-    estimate_gas = w3.eth.estimate_gas(transaction)
-    print(f"* Estimate Gas is {estimate_gas} Units. Gas Price is {w3.eth.gas_price}")
-    print(f"* Estimate Gas Fee is {estimate_gas * w3.eth.gas_price} Wei / {estimate_gas * w3.eth.gas_price * 0.000000001} Gwei / {estimate_gas * w3.eth.gas_price * 0.000000001 * 0.000000001} Ether")
-    Continue = input("> Would you like to continue the transaction? <yes> / <no> :")
-    if Continue != 'yes':
-        return
+    # estimate_gas = w3.eth.estimate_gas(transaction)
+    # print(f"* Estimate Gas is {estimate_gas} Units. Gas Price is {w3.eth.gas_price}")
+    # print(f"* Estimate Gas Fee is {estimate_gas * w3.eth.gas_price} Wei / {estimate_gas * w3.eth.gas_price * 0.000000001} Gwei / {estimate_gas * w3.eth.gas_price * 0.000000001 * 0.000000001} Ether")
+    # Continue = input("> Would you like to continue the transaction? <yes> / <no> :")
+    # if Continue != 'yes':
+    #     return
     
     signed_txn = w3.eth.account.sign_transaction(transaction, private_key= os.getenv("PRIVATE_KEY"))
     print("Deploying Contract…")

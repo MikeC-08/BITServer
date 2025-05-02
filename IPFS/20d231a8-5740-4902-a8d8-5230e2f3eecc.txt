@@ -1,1 +1,0 @@
-{'rarity': 'Epic', 'name': 'AK-47 - Gold Coating + Explosion Effect', 'wear': 0.6759}

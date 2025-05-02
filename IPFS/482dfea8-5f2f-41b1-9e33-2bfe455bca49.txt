@@ -1,1 +1,0 @@
-{'rarity': 'Rare', 'name': 'Frag Grenade - Standard Red', 'wear': 0.4544}

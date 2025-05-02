@@ -1,1 +1,0 @@
-{'rarity': 'Rare', 'name': 'MP9 - Green Coating + Flashbang', 'wear': 0.7668}

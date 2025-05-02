@@ -210,7 +210,7 @@ function purchase(assetAddress){
 
 
   let functionData = MethodID;
-  transaction_sent(assetAddress,functionData, "1".toString(16));
+  transaction_sent(assetAddress,functionData, plaformFee.toString(16));
 }
 function clearApprove(assetAddress){
   let hexWidth = 64; 
