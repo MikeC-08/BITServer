@@ -7,8 +7,8 @@ import numpy as np
 
 app = Flask(__name__)
 assetJson = {}
-w3 = Web3(HTTPProvider('http://127.0.0.1:8545'))
-# w3 = Web3(HTTPProvider('http://opgameplay.tplinkdns.com:8545'))
+# w3 = Web3(HTTPProvider('http://127.0.0.1:8545'))
+w3 = Web3(HTTPProvider('http://opgameplay.tplinkdns.com:8545'))
 BIT_owner_address = None
 USDT_Abi = {}
 defaultAddress = None

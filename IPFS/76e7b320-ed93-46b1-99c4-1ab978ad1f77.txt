@@ -1,1 +1,0 @@
-{'rarity': 'Common', 'name': 'UMP45 - Grey Coating', 'wear': 0.5203}

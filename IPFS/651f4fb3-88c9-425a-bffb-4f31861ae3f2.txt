@@ -1,1 +1,0 @@
-{'rarity': 'Rare', 'name': 'AK-47 - Red Coating', 'wear': 0.9873}

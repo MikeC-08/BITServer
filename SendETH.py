@@ -1,8 +1,8 @@
 from web3 import Web3
 
 # 連接到以太坊節點（可以使用Infura等節點）
-w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:8545'))
-# w3 = Web3(Web3.HTTPProvider('http://opgameplay.tplinkdns.com:8545'))
+# w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:8545'))
+w3 = Web3(Web3.HTTPProvider('http://opgameplay.tplinkdns.com:8545'))
 
 # 以太坊發送者地址（需要有足夠的以太幣用於交易手續費）
 sender_address = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'

@@ -1,1 +1,0 @@
-{'rarity': 'Common', 'name': 'Smoke Grenade - Standard Blue', 'wear': 0.3663}

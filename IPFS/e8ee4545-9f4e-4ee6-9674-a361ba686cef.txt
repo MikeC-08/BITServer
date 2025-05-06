@@ -1,1 +1,0 @@
-{'rarity': 'Epic', 'name': 'MP9 - Green Coating + Smoke Grenade', 'wear': 0.0159}

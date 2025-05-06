@@ -1,0 +1,1 @@
+{'rarity': 'Common', 'name': 'MP9 - Blue Coating', 'wear': 0.2997}
