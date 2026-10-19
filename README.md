@@ -55,8 +55,4 @@ All platform logic lives in this repository: Flask backend, web frontend, smart 
 
 ## Tech stack
 
-Python · Flask 3.1 · web3.py 7.8 · Solidity · JavaScript + web3.js + MetaMask · simulated IPFS
-
-## Status
-
-Built as a university final-year project and kept as a portfolio piece. The code is presented as-submitted, with documentation improved afterwards.
+Python · Flask 3.1 · web3.py 7.8 · Solidity · JavaScript + MetaMask
